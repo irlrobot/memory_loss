@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 """
-Train My Brain
-github.com/irlrobot/train_my_brain
+Memory Loss
+github.com/irlrobot/memory_loss
 """
 from __future__ import print_function
 from random import randint
@@ -76,9 +76,8 @@ def speech_with_card(tts, attributes, should_end_session, card_title,
 def play_end_message():
     """play a standard message when exiting the skill"""
     print("=====play_end_message fired...")
-    standard_message = "Thanks for playing Train My Brain!  Play daily to keep "\
-        "your mind muscles strong."
-    review_message = "Thanks for playing Train My Brain!  "\
+    standard_message = "Thanks for playing Memory Loss!"
+    review_message = "Thanks for playing Memory Loss!  "\
         "Please leave a review and let us know what you thought."
 
     # don't always ask for a review

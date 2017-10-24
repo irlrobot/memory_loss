@@ -1,40 +1,28 @@
 #!/usr/bin/env python
 """
-Train My Brain
-github.com/irlrobot/train_my_brain
+Memory Loss
+github.com/irlrobot/memory_loss
 """
 from __future__ import print_function
-from random import sample, shuffle
+from random import choice, shuffle
 from alexa_responses import speech
 from brain_training import QUESTIONS
 
-def play_new_game(replay):
-    """play new game intro and build question bank for the session"""
+def play_new_game():
+    """play new game intro and build question bank"""
     print("=====play_new_game fired...")
-    if replay:
-        new_game_message = "Get ready... Starting a new game in... 3... 2... 1..."
-    else:
-        new_game_message = "Welcome to Train My Brain!  I'm going to give you six "\
-            "brain teasers and you'll only have eight seconds to answer each one... "\
-            "I won't repeat the questions so try to remember all the details...  "\
-            "Starting in...  3... 2... 1..."
-    questions = pick_random_questions(6)
-    speech_output = new_game_message + questions[0]['question']
+    new_game_message = "Welcome to Memory Loss!  Playing is easy.  I'll give "\
+            "a brain teaser and then ask a question.  Your job is to answer "\
+            "with a simple Yes, or, No within 8 seconds. I'll keep going until "\
+            "someone tells me to stop. Invent your own scoring system and play "\
+            "with others for the most fun.  "\
+            "First question coming in... 3... 2... 1... "
+    shuffle(QUESTIONS)
+    question = choice(QUESTIONS)
+    speech_output = new_game_message + question['question']
     should_end_session = False
     attributes = {
-        "questions": questions,
-        "score": 0,
-        "current_question_index": 0,
-        "game_length": len(questions),
+        "question": question,
         "game_status": "in_progress"
     }
     return speech(speech_output, attributes, should_end_session, None)
-
-def pick_random_questions(num_questions):
-    """pick random questions from the bank to form the game"""
-    print("=====pick_random_questions fired...")
-    shuffle(QUESTIONS)
-    questions = sample(list(QUESTIONS), k=num_questions)
-
-    shuffle(questions)
-    return questions

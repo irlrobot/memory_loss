@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 """
-Train My Brain
-github.com/irlrobot/train_my_brain
+Memory Loss
+github.com/irlrobot/memory_loss
 
 Categories:
 1. word_jumble
@@ -14,26 +14,6 @@ Categories:
 8. out_of_place
 9. low_high_number
 """
-def fuzzy_match_threshold(category):
-    """determine the threshold for fuzzy matching"""
-    if category == 'word_jumble':
-        return 60
-    if category == 'spelling_backwords':
-        return 90
-    if category == 'simple_math':
-        return 100
-    if category == 'memory_game':
-        return 60
-    if category == 'simple_trivia':
-        return 60
-    if category == 'word_association':
-        return 60
-    if category == 'repeat':
-        return 60
-    if category == 'out_of_place':
-        return 60
-    if category == 'low_high_number':
-        return 100
 
 QUESTIONS = [
     {

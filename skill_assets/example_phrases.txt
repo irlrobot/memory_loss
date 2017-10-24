@@ -1,3 +1,3 @@
-Alexa, play Train My Brain
-Alexa, start Train My Brain
-Alexa, begin Train My Brain
+Alexa, play Memory Loss
+Alexa, start Memory Loss
+Alexa, begin Memory Loss

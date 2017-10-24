@@ -1,13 +1,13 @@
 #!/usr/bin/env python
 """
-Train My Brain
-github.com/irlrobot/train_my_brain
+Memory Loss
+github.com/irlrobot/memory_loss
 """
 from __future__ import print_function
 import json
 from play_new_game import play_new_game
 from handle_answer_request import handle_answer_request
-from alexa_responses import play_end_message, speech
+from alexa_responses import speech, play_end_message
 
 def lambda_handler(event, _context):
     """main function for AWS Lambda"""
@@ -38,32 +38,39 @@ def on_launch(event_request, session):
     """when customer launches the skill via modal"""
     print("=====on_launch requestId:  " + event_request['requestId'] +
           ", sessionId=" + session['sessionId'])
-    return play_new_game(False)
+    return play_new_game()
 
 def on_intent(event_request, session):
     """when customer launches the skill via modal"""
     print("=====on_intent requestId:  " + event_request['requestId'] +
           ", sessionId=" + session['sessionId'])
 
-    intent = event_request['intent']
     intent_name = event_request['intent']['name']
     print("=====intent is: " + intent_name)
 
-    if intent_name in ("AMAZON.YesIntent", "AMAZON.NoIntent"):
-        print("=====Yes/NoIntent fired...")
+    if intent_name == "AMAZON.YesIntent":
+        print("=====YesIntent fired...")
         if 'attributes' in session:
             if session['attributes']['game_status'] == "in_progress":
-                return handle_answer_request(intent, session)
+                return handle_answer_request('yes', session)
+    if intent_name == "AMAZON.NoIntent":
+        print("=====NoIntent fired...")
+        if 'attributes' in session:
+            if session['attributes']['game_status'] == "in_progress":
+                return handle_answer_request('no', session)
     if intent_name in ("AMAZON.StopIntent", "AMAZON.CancelIntent"):
         print("=====StopIntent or CancelIntent fired")
         return play_end_message()
     if intent_name == 'AMAZON.HelpIntent':
         print("=====HelpIntent...")
-        tts = "During the game I'll give you 6 random brain teasers and only 8 "\
-            "seconds to anser each one... To make your mind muscles stronger, I "\
-            "won't repeat any of the questions, so try to remember all the "\
-            "details... You can say 'Start Over' if you'd like a new game, "\
-            "or make your guess for the last question..."
+        tts = "Listen carefully"
+        tts = "During the game I'll give random brain teasers and only 8 "\
+            "seconds to answer each one. I won't repeat any of the questions, "\
+            "so try to remember all the details. The game is best played with "\
+            "a large group, and you should invent a scoring system or hand out "\
+            "penalties, like taking a drink, for wrong answers.  I'll keep "\
+            "asking questions until someone tells me to Stop. "\
+            "Now, what's your guess for the last question?"
         return speech(tts, session['attributes'], False, None)
 
 def on_session_ended(event_request, session):
