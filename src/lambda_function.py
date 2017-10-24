@@ -49,35 +49,11 @@ def on_intent(event_request, session):
     intent_name = event_request['intent']['name']
     print("=====intent is: " + intent_name)
 
-    if intent_name == "AnswerIntent":
-        print("=====AnswerIntent fired...")
-        if 'attributes' in session:
-            if 'questions' in session['attributes']:
-                return handle_answer_request(intent, session)
-
-        # we probably got here because user said something other than
-        # yes or no after asking if they wanted to play the game again
-        print("=====no attributes ending game")
-        return play_end_message()
-    if intent_name == "GameIntent":
-        print("=====GameIntent fired...")
-        # if there's a session and we're in a game treat this as an answer
-        # unfortunately it will be wrong but it's better than starting over
+    if intent_name in ("AMAZON.YesIntent", "AMAZON.NoIntent"):
+        print("=====Yes/NoIntent fired...")
         if 'attributes' in session:
             if session['attributes']['game_status'] == "in_progress":
                 return handle_answer_request(intent, session)
-        return play_new_game(False)
-    if intent_name in ("AMAZON.StartOverIntent", "AMAZON.YesIntent"):
-        print("=====StartOverIntent or YesIntent fired...")
-        return play_new_game(True)
-    if intent_name == "AMAZON.NoIntent":
-        print("=====NoIntent fired...")
-        # if there's a session and we're in a game treat this as a wrong answer
-        if 'attributes' in session:
-            if session['attributes']['game_status'] == "in_progress":
-                return handle_answer_request(intent, session)
-        # otherwise end the game
-        return play_end_message()
     if intent_name in ("AMAZON.StopIntent", "AMAZON.CancelIntent"):
         print("=====StopIntent or CancelIntent fired")
         return play_end_message()
