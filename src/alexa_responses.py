@@ -78,7 +78,7 @@ def play_end_message():
     print("=====play_end_message fired...")
     standard_message = "Thanks for playing Memory Loss!"
     review_message = "Thanks for playing Memory Loss!  "\
-        "Please leave a review and let us know what you thought."
+        "Please leave a 5 star review if you had fun."
 
     # don't always ask for a review
     if randint(1, 10) == 1:
