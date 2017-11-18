@@ -1,2 +1,0 @@
-AMAZON.YesIntent True
-AMAZON.NoIntent False

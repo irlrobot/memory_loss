@@ -1,0 +1,59 @@
+{
+  "languageModel": {
+    "intents": [
+      {
+        "name": "AMAZON.CancelIntent",
+        "samples": []
+      },
+      {
+        "name": "AMAZON.HelpIntent",
+        "samples": [
+          "repeat",
+          "what are the rules",
+          "rules",
+          "how do we play",
+          "how to play"
+        ]
+      },
+      {
+        "name": "AMAZON.NoIntent",
+        "samples": [
+          "false"
+        ]
+      },
+      {
+        "name": "AMAZON.StartOverIntent",
+        "samples": [
+          "new game",
+          "start new game",
+          "play again",
+          "yes play again",
+          "play game again"
+        ]
+      },
+      {
+        "name": "AMAZON.StopIntent",
+        "samples": []
+      },
+      {
+        "name": "AMAZON.YesIntent",
+        "samples": [
+          "true"
+        ]
+      },
+      {
+        "name": "NotSureIntent",
+        "samples": [
+          "i don't know",
+          "i'm not sure",
+          "don't know",
+          "not sure",
+          "wasn't listening",
+          "what do i do"
+        ],
+        "slots": []
+      }
+    ],
+    "invocationName": "memory loss"
+  }
+}
