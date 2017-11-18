@@ -58,17 +58,21 @@ def on_intent(event_request, session):
         if 'attributes' in session:
             if session['attributes']['game_status'] == "in_progress":
                 return handle_answer_request('no', session)
+    if intent_name == "NotSureIntent":
+        print("=====NotSureIntent fired...")
+        if 'attributes' in session:
+            if session['attributes']['game_status'] == "in_progress":
+                return handle_answer_request('', session)
     if intent_name in ("AMAZON.StopIntent", "AMAZON.CancelIntent"):
         print("=====StopIntent or CancelIntent fired")
         return play_end_message()
     if intent_name == 'AMAZON.HelpIntent':
         print("=====HelpIntent...")
-        tts = "Listen carefully"
-        tts = "During the game I'll give random brain teasers and only 8 "\
-            "seconds to answer each one. I won't repeat any of the questions, "\
+        tts = "All you have to do is answer Yes or No to each question I ask. "\
+            "I won't repeat any of the questions, "\
             "so try to remember all the details. The game is best played with "\
             "a large group, and you should invent a scoring system or hand out "\
-            "penalties, like taking a drink, for wrong answers.  I'll keep "\
+            "penalties for wrong answers.  I'll keep "\
             "asking questions until someone tells me to Stop. "\
             "Now, what's your guess for the last question?"
         return speech(tts, session['attributes'], False, None)
