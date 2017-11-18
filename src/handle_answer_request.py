@@ -23,7 +23,7 @@ def handle_answer_request(player_answer, session):
     if correct_answer == player_answer:
         answered_correctly = True
     else:
-        log_wrong_answer(current_question, player_answer, correct_answer)
+        log_wrong_answer(current_question['question'], player_answer, correct_answer)
         answered_correctly = False
 
     next_tts = "Next question in 3... 2... 1... " + next_question['question']
@@ -39,7 +39,7 @@ def handle_answer_request(player_answer, session):
         speech_output = "Wrong!" + next_tts
         card_title = "Wrong!"
 
-    card_text = "The question was:\n" + current_question
+    card_text = "The question was:\n" + current_question['question']
     return speech_with_card(speech_output, attributes, should_end_session,
                             card_title, card_text, answered_correctly)
 
