@@ -1,9 +1,10 @@
 # Short
-Keep your mind sharp with brain training at least once a day.
+Memory Loss is a party game that will hurt your head!
 
 # Long
-Keep your mind sharp with brain training at least once a day.  Every time you play, Alexa will give you 6 random brain teasers with only 8 seconds to answer each.  Try to keep all the details in your head because she won't repeat the questions.  See how many you can get right while moving as fast as you can.  Young or old, play it daily to keep your brain in tip top shape!
+Memory Loss is a party game that will hurt your head!  Playing is easy.  Alexa will give you a series of words, numbers, or letters and your job is to remember them.  Then she'll ask a question and all you have to do is reply yes or no.  This deceptively simple game is best played with a group of friends or family; the more the better!  For the most fun, try making up your own scoring system or dishing out punishments for incorrect answers.  New questions are added weekly.
 
-Categories include Basic Math (addition, subtraction, and multiplication), Word Puzzles, Spelling Backwards, Memory Games, and Trivia.
-
-Leave feedback in your review to tell us what you liked, disliked, or what you'd like to see included.  Thanks for playing Memory Loss!
+Example rules you can implement to make the game more fun:
+* Playing with family?  The winner is relieved of any chore duty for the weekend!
+* Playing with a group of friends on a Friday night?  Take a drink if you answer incorrectly!
+* Need to determine who goes first?  Whoever has the longest tongue!
